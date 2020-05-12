@@ -1682,30 +1682,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, UserService);
 
         this.http = http;
-        this.USERS_API_URL = 'http://localhost:8888/api/v1/users';
-        this.VIEW_USERS_API_URL = 'http://localhost:8888/api/v1/v-users';
+        /* DEVELOPMENT ENV URL
+        private USERS_API_URL = 'http://localhost:8888/api/v1/users';
+        
+        private VIEW_USERS_API_URL = 'http://localhost:8888/api/v1/v-users';
+        */
+
+        /**
+         *
+         * PRODUCTION ENV URL
+         */
+
+        this.USERS_API_ENDPOINT = "/users";
+        this.VIEW_USERS_API_ENDPOINT = "/v-users";
       }
 
       _createClass(UserService, [{
         key: "getUser",
         value: function getUser(id) {
-          return this.http.get("".concat(this.VIEW_USERS_API_URL, "/").concat(id));
+          //return this.http.get(`${this.VIEW_USERS_API_URL}/${id}`);
+          return this.http.get("".concat(this.VIEW_USERS_API_ENDPOINT, "/").concat(id));
         }
       }, {
         key: "createUser",
         value: function createUser(user) {
-          return this.http.post("".concat(this.USERS_API_URL, "/add"), user);
+          //return this.http.post(`${this.USERS_API_URL}/add`, user);
+          return this.http.post("".concat(this.USERS_API_ENDPOINT, "/add"), user);
         } // tslint:disable-next-line: ban-types
 
       }, {
         key: "updateUser",
         value: function updateUser(id, value) {
-          return this.http.put("".concat(this.USERS_API_URL, "/").concat(id), value);
+          //return this.http.put(`${this.USERS_API_URL}/${id}`, value);
+          return this.http.put("".concat(this.USERS_API_ENDPOINT, "/").concat(id), value);
         }
       }, {
         key: "getUserList",
         value: function getUserList() {
-          return this.http.get("".concat(this.VIEW_USERS_API_URL));
+          //return this.http.get(`${this.VIEW_USERS_API_URL}`);
+          return this.http.get("".concat(this.VIEW_USERS_API_ENDPOINT));
         }
       }]);
 

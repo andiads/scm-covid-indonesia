@@ -820,21 +820,34 @@ __webpack_require__.r(__webpack_exports__);
 class UserService {
     constructor(http) {
         this.http = http;
-        this.USERS_API_URL = 'http://localhost:8888/api/v1/users';
-        this.VIEW_USERS_API_URL = 'http://localhost:8888/api/v1/v-users';
+        /* DEVELOPMENT ENV URL
+        private USERS_API_URL = 'http://localhost:8888/api/v1/users';
+        
+        private VIEW_USERS_API_URL = 'http://localhost:8888/api/v1/v-users';
+        */
+        /**
+         *
+         * PRODUCTION ENV URL
+         */
+        this.USERS_API_ENDPOINT = "/users";
+        this.VIEW_USERS_API_ENDPOINT = "/v-users";
     }
     getUser(id) {
-        return this.http.get(`${this.VIEW_USERS_API_URL}/${id}`);
+        //return this.http.get(`${this.VIEW_USERS_API_URL}/${id}`);
+        return this.http.get(`${this.VIEW_USERS_API_ENDPOINT}/${id}`);
     }
     createUser(user) {
-        return this.http.post(`${this.USERS_API_URL}/add`, user);
+        //return this.http.post(`${this.USERS_API_URL}/add`, user);
+        return this.http.post(`${this.USERS_API_ENDPOINT}/add`, user);
     }
     // tslint:disable-next-line: ban-types
     updateUser(id, value) {
-        return this.http.put(`${this.USERS_API_URL}/${id}`, value);
+        //return this.http.put(`${this.USERS_API_URL}/${id}`, value);
+        return this.http.put(`${this.USERS_API_ENDPOINT}/${id}`, value);
     }
     getUserList() {
-        return this.http.get(`${this.VIEW_USERS_API_URL}`);
+        //return this.http.get(`${this.VIEW_USERS_API_URL}`);
+        return this.http.get(`${this.VIEW_USERS_API_ENDPOINT}`);
     }
 }
 UserService.ɵfac = function UserService_Factory(t) { return new (t || UserService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
