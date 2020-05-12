@@ -29,7 +29,7 @@ import com.nusacamp.app.service.UserTypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin(origins = "https://scm-covid19id-app.herokuapp.com/")
+@CrossOrigin(origins = "https://scm-covid19id-app.herokuapp.com")
 @RestController
 @RequestMapping("/api/v1/roles")
 @Slf4j
