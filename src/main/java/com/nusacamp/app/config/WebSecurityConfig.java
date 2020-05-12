@@ -53,7 +53,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().disable()
 			.formLogin()
 				.loginPage("/api/v1/login").failureUrl("/api/v1/login?error=true")
-				.defaultSuccessUrl("/dashboard")
 				.usernameParameter("user_name")
 				.passwordParameter("password")
 				.and()
@@ -70,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web
 			.ignoring()
-			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/image/**");
+			.antMatchers("/resources/**", "/templates/**","/static/**", "/css/**", "/js/**", "/image/**");
 	}
 	
 	// Cross origin resource sharing
