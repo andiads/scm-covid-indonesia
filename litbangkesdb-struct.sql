@@ -37,8 +37,8 @@ CREATE TABLE `items` (
   `item_pieces_kemasan` int(11) DEFAULT NULL,
   `item_metrics_pieces` varchar(24) DEFAULT NULL,
   `id_category` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `shown` int(11) NOT NULL DEFAULT 1,
   `created_by` int(11) NOT NULL DEFAULT 1,
   `id_brand` int(11) DEFAULT NULL,
@@ -140,8 +140,8 @@ CREATE TABLE `labs` (
   `alamat_lab` varchar(256) DEFAULT NULL,
   `pic_lab` varchar(128) DEFAULT NULL,
   `mail_lab` varchar(100) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` int(11) DEFAULT NULL,
   `shown` int(11) NOT NULL DEFAULT 1,
   `contact_lab` varchar(20) NOT NULL
@@ -158,8 +158,8 @@ CREATE TABLE `lab_pcr` (
   `id_lab` int(11) NOT NULL,
   `brand` varchar(64) NOT NULL,
   `capacity` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -176,7 +176,7 @@ CREATE TABLE `registration` (
   `password` varchar(32) NOT NULL,
   `id_lab` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp()
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -192,8 +192,8 @@ CREATE TABLE `stock_details` (
   `description` varchar(128) DEFAULT NULL,
   `amount` int(11) NOT NULL,
   `id_item` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `shown` int(11) NOT NULL DEFAULT 1,
   `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -209,8 +209,8 @@ CREATE TABLE `stock_order` (
   `transaction_type` int(11) NOT NULL,
   `sto_send_time` datetime NOT NULL,
   `sto_arrive_time` datetime NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `shown` int(11) NOT NULL DEFAULT 1,
   `delete_reason` varchar(64) DEFAULT NULL,
   `sto_source` int(11) NOT NULL,
@@ -273,8 +273,8 @@ CREATE TABLE `user` (
   `last_login` datetime DEFAULT NULL,
   `last_ip` varchar(20) DEFAULT NULL,
   `status` int(11) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
