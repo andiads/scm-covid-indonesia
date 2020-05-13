@@ -3,9 +3,8 @@
  This is the back-end resource server of SCM Covid19 APP
  Using Springboot
  
- For Front-End Client Side Project please refer to this repository:
- `https://github.com/andiads/scm-covid19id-client`
- (SCM-Covid19id-Client)[https://github.com/andiads/scm-covid19id-client]
+ For Front-End Client Side Project please refer to this repository page:
+ [SCM-Covid19id-Client](https://github.com/andiads/scm-covid19id-client)
  
 ## Development server
 
