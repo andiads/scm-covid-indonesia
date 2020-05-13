@@ -53,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().disable()
 			.formLogin()
 				.loginPage("/api/v1/login").failureUrl("/api/v1/login?error=true")
+				.defaultSuccessUrl("/users")
 				.usernameParameter("user_name")
 				.passwordParameter("password")
 				.and()

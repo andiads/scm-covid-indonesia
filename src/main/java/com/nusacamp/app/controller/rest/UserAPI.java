@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 // local angular dev: http://localhost:4200
-@CrossOrigin(origins = "https://scm-covid19id-app.herokuapp.com")
+@CrossOrigin(origins = "https://scm-covid19id-webapp.herokuapp.com")
 @RestController
 @RequestMapping("/api/v1/users")
 @Slf4j
