@@ -12,6 +12,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		// TODO Auto-generated method stub
 		registry.addViewController("/home").setViewName("index");
 		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/api/v1/login").setViewName("login");
 	}
 	
 	
