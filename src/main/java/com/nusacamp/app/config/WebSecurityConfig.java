@@ -41,10 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and()
 			.authorizeRequests()
-				.antMatchers("/").permitAll()
-				.antMatchers("/home").permitAll()
 				.antMatchers("/api/v1/**").permitAll()
-				.antMatchers("/registration").permitAll()
+				.antMatchers("/api/v1/registration").permitAll()
 				.antMatchers("/api/v1/admin/**").hasRole("ADMIN")
 				.anyRequest().fullyAuthenticated()
 				.and()
@@ -53,12 +51,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().disable()
 			.formLogin()
 				.loginPage("/api/v1/login").failureUrl("/api/v1/login?error=true")
-				.defaultSuccessUrl("/users")
 				.usernameParameter("user_name")
 				.passwordParameter("password")
 				.and()
 			.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutRequestMatcher(new AntPathRequestMatcher("/api/v1/user/logout", "POST"))
 				.logoutSuccessUrl("/api/v1/login").and().exceptionHandling()
 				.accessDeniedPage("/access-denied");
 		
@@ -79,7 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
+				registry.addMapping("/**").allowedOrigins("https://scm-covid19id-webapp.herokuapp.com").allowedMethods("*");
 			}
 		};
 	}

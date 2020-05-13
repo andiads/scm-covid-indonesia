@@ -37,8 +37,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserAPI {
 	
-	//private String PAGED_VIEW_URL = "http://localhost:8888/";
-	
 	@Autowired
 	private JwtTokenProvider tokenProvider;
 	
