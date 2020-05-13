@@ -14,6 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="item_category")
 public class ItemCategory {
@@ -26,50 +29,7 @@ public class ItemCategory {
 	private String namaCategory;
 	@Column(name="code_category")
 	private String codeCategory;
+	@Column(name="shown")
 	private int shown;
-	
-	public ItemCategory() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getIdCategory() {
-		return idCategory;
-	}
-
-	public void setIdCategory(int idCategory) {
-		this.idCategory = idCategory;
-	}
-
-	public String getNamaCategory() {
-		return namaCategory;
-	}
-
-	public void setNamaCategory(String namaCategory) {
-		this.namaCategory = namaCategory;
-	}
-
-	public String getCodeCategory() {
-		return codeCategory;
-	}
-
-	public void setCodeCategory(String codeCategory) {
-		this.codeCategory = codeCategory;
-	}
-
-	public int getShown() {
-		return shown;
-	}
-
-	public void setShown(int shown) {
-		this.shown = shown;
-	}
-
-	@Override
-	public String toString() {
-		return "ItemCategory [idCategory=" + idCategory + ", namaCategory=" + namaCategory + ", codeCategory="
-				+ codeCategory + ", shown=" + shown + "]";
-	}
-	
-	
+		
 }

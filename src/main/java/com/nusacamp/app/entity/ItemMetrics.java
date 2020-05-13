@@ -14,6 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="item_metrics")
 public class ItemMetrics {
@@ -32,66 +35,5 @@ public class ItemMetrics {
 	private float metricSize;
 	@Column(name="metric_code")
 	private String metricCode;
-	
-	public ItemMetrics() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getIdMetrics() {
-		return idMetrics;
-	}
-
-	public void setIdMetrics(int idMetrics) {
-		this.idMetrics = idMetrics;
-	}
-
-	public int getIdSUbCat() {
-		return idSUbCat;
-	}
-
-	public void setIdSUbCat(int idSUbCat) {
-		this.idSUbCat = idSUbCat;
-	}
-
-	public String getCodeSubCat() {
-		return codeSubCat;
-	}
-
-	public void setCodeSubCat(String codeSubCat) {
-		this.codeSubCat = codeSubCat;
-	}
-
-	public String getMetricName() {
-		return metricName;
-	}
-
-	public void setMetricName(String metricName) {
-		this.metricName = metricName;
-	}
-
-	public float getMetricSize() {
-		return metricSize;
-	}
-
-	public void setMetricSize(float metricSize) {
-		this.metricSize = metricSize;
-	}
-
-	public String getMetricCode() {
-		return metricCode;
-	}
-
-	public void setMetricCode(String metricCode) {
-		this.metricCode = metricCode;
-	}
-
-	@Override
-	public String toString() {
-		return "ItemMetrics [idMetrics=" + idMetrics + ", idSUbCat=" + idSUbCat + ", codeSubCat=" + codeSubCat
-				+ ", metricName=" + metricName + ", metricSize=" + metricSize + ", metricCode=" + metricCode + "]";
-	}
-	
-	
-	
+		
 }

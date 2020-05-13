@@ -21,34 +21,67 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nusacamp.app.entity.User;
+import com.nusacamp.app.entity.UserType;
+import com.nusacamp.app.entity.VUsersRegistered;
 import com.nusacamp.app.exception.ResourceNotFoundException;
 import com.nusacamp.app.jwt.JwtTokenProvider;
 import com.nusacamp.app.repository.UserRepository;
 import com.nusacamp.app.service.UserService;
+import com.nusacamp.app.service.UserTypeService;
+import com.nusacamp.app.service.ViewUsersService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 // local angular dev: http://localhost:4200
-//@CrossOrigin(origins = "https://scm-covid19id-webapp.herokuapp.com")
 @RestController
 @RequestMapping("/api/v1/users")
 @Slf4j
 @RequiredArgsConstructor
-public class UserAPI {
+public class UserController {
 	
 	@Autowired
 	private JwtTokenProvider tokenProvider;
 	
 	private final UserService userService;
 	
+	private final UserTypeService userTypeService;
+	
+	private final ViewUsersService viewUsersService;
+	
+	
+	// get user roles
+	@GetMapping("/roles")
+	public ResponseEntity<List<UserType>> getAllUserType() {
+		return ResponseEntity.ok(this.userTypeService.findAll());
+	}
+	
+	//get users from view v_users_registered table can't be manipulated
+	@GetMapping("/v-users")
+	public ResponseEntity<List<VUsersRegistered>> getAllVUsers(){
+		return ResponseEntity.ok(this.viewUsersService.findAll());
+	}
+
+	//get user by id from view v_users_registered table can't be manipulated
+	@GetMapping("/v-users/{id}")
+	public ResponseEntity<VUsersRegistered> getVUserById(@PathVariable int id) {
+		Optional<VUsersRegistered> user = this.viewUsersService.findById(id);
+		if (!user.isPresent()) {
+			log.error("Id " + id + " is not existed");
+			ResponseEntity.badRequest().build();
+		}
+		
+		return ResponseEntity.ok(user.get());
+	}
+	
+	// get user from user table (not view)
 	@GetMapping
 	public ResponseEntity<List<User>> getAllUsers(){
 		return ResponseEntity.ok(this.userService.findAll());
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<User> add(@Valid @RequestBody User user, HttpServletRequest hsr) {
+	public ResponseEntity<User> addUser(@Valid @RequestBody User user, HttpServletRequest hsr) {
 		if (this.userService.findUserByMail(user.getMail())!=null) {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
@@ -72,6 +105,8 @@ public class UserAPI {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
+	
+	// get user by id from user table (not view)
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable int id) {
 		Optional<User> user = this.userService.findById(id);
@@ -83,7 +118,7 @@ public class UserAPI {
 		return ResponseEntity.ok(user.get());
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable int id,
 			@Valid @RequestBody User user, HttpServletRequest hsr) 
 	{

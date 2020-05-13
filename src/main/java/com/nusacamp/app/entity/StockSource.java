@@ -14,6 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="stock_source")
 public class StockSource {
@@ -27,39 +30,5 @@ public class StockSource {
 	@Column(name="sub_sumber")
 	private String subSource;
 	
-	public StockSource() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
-	}
-
-	public String getSubSource() {
-		return subSource;
-	}
-
-	public void setSubSource(String subSource) {
-		this.subSource = subSource;
-	}
-
-	@Override
-	public String toString() {
-		return "StockSource [id=" + id + ", source=" + source + ", subSource=" + subSource + "]";
-	}
-
-	
 }

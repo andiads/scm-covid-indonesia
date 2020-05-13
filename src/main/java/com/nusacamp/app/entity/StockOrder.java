@@ -13,6 +13,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="stock_order")
 public class StockOrder {
@@ -37,6 +40,7 @@ public class StockOrder {
 	@Column(name="updated_at")
 	private String updatedAt;
 	
+	@Column(name="shown")
 	private int shown;
 	
 	@Column(name="delete_reason")
@@ -47,7 +51,7 @@ public class StockOrder {
 	private String stockSourceDesc;
 	@Column(name="id_batch")
 	private String idBatch;
-	
+	@Column(name="receipt")
 	private String receipt;
 	
 	@Column(name="source_point")
@@ -55,164 +59,12 @@ public class StockOrder {
 	
 	@Column(name="end_point")
 	private int endPoint;
-	
+	@Column(name="description")
 	private String description;
-	
+	@Column(name="status")
 	private int status;
 	
 	@Column(name="id_ref")
 	private int idRef;
 
-	public StockOrder() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getIdStock() {
-		return idStock;
-	}
-
-	public void setIdStock(int idStock) {
-		this.idStock = idStock;
-	}
-
-	public int getTrxType() {
-		return trxType;
-	}
-
-	public void setTrxType(int trxType) {
-		this.trxType = trxType;
-	}
-
-	public String getSendTime() {
-		return sendTime;
-	}
-
-	public void setSendTime(String sendTime) {
-		this.sendTime = sendTime;
-	}
-
-	public String getArriveTime() {
-		return arriveTime;
-	}
-
-	public void setArriveTime(String arriveTime) {
-		this.arriveTime = arriveTime;
-	}
-
-	public String getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(String createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public String getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(String updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public int getShown() {
-		return shown;
-	}
-
-	public void setShown(int shown) {
-		this.shown = shown;
-	}
-
-	public String getDeleteReason() {
-		return deleteReason;
-	}
-
-	public void setDeleteReason(String deleteReason) {
-		this.deleteReason = deleteReason;
-	}
-
-	public int getStockSource() {
-		return stockSource;
-	}
-
-	public void setStockSource(int stockSource) {
-		this.stockSource = stockSource;
-	}
-
-	public String getStockSourceDesc() {
-		return stockSourceDesc;
-	}
-
-	public void setStockSourceDesc(String stockSourceDesc) {
-		this.stockSourceDesc = stockSourceDesc;
-	}
-
-	public String getIdBatch() {
-		return idBatch;
-	}
-
-	public void setIdBatch(String idBatch) {
-		this.idBatch = idBatch;
-	}
-
-	public String getReceipt() {
-		return receipt;
-	}
-
-	public void setReceipt(String receipt) {
-		this.receipt = receipt;
-	}
-
-	public int getSourcePoint() {
-		return sourcePoint;
-	}
-
-	public void setSourcePoint(int sourcePoint) {
-		this.sourcePoint = sourcePoint;
-	}
-
-	public int getEndPoint() {
-		return endPoint;
-	}
-
-	public void setEndPoint(int endPoint) {
-		this.endPoint = endPoint;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public int getIdRef() {
-		return idRef;
-	}
-
-	public void setIdRef(int idRef) {
-		this.idRef = idRef;
-	}
-
-	@Override
-	public String toString() {
-		return "StockOrder [idStock=" + idStock + ", trxType=" + trxType + ", sendTime=" + sendTime + ", arriveTime="
-				+ arriveTime + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", shown=" + shown
-				+ ", deleteReason=" + deleteReason + ", stockSource=" + stockSource + ", stockSourceDesc="
-				+ stockSourceDesc + ", idBatch=" + idBatch + ", receipt=" + receipt + ", sourcePoint=" + sourcePoint
-				+ ", endPoint=" + endPoint + ", description=" + description + ", status=" + status + ", idRef=" + idRef
-				+ "]";
-	}
-	
-	
 }

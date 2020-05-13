@@ -14,6 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="transaction_type")
 public class TransactionType {
@@ -24,32 +27,5 @@ public class TransactionType {
 	private int idType;
 	@Column(name="tx_name")
 	private String txName;
-	
-	public TransactionType() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public int getIdType() {
-		return idType;
-	}
-
-	public void setIdType(int idType) {
-		this.idType = idType;
-	}
-
-	public String getTxName() {
-		return txName;
-	}
-
-	public void setTxName(String txName) {
-		this.txName = txName;
-	}
-
-	@Override
-	public String toString() {
-		return "TransactionType [idType=" + idType + ", txName=" + txName + "]";
-	}
-	
 	
 }

@@ -14,6 +14,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="item_sub_cat")
 public class ItemSubCat {
@@ -28,57 +31,7 @@ public class ItemSubCat {
 	private String namaSubCat;
 	@Column(name="code_sub_cat")
 	private String codeSubCat;
+	@Column(name="shown")
 	private int shown;
-	
-	public ItemSubCat() {
-		super();
-	}
 
-	public int getIdSubCat() {
-		return idSubCat;
-	}
-
-	public void setIdSubCat(int idSubCat) {
-		this.idSubCat = idSubCat;
-	}
-
-	public int getIdCat() {
-		return idCat;
-	}
-
-	public void setIdCat(int idCat) {
-		this.idCat = idCat;
-	}
-
-	public String getNamaSubCat() {
-		return namaSubCat;
-	}
-
-	public void setNamaSubCat(String namaSubCat) {
-		this.namaSubCat = namaSubCat;
-	}
-
-	public String getCodeSubCat() {
-		return codeSubCat;
-	}
-
-	public void setCodeSubCat(String codeSubCat) {
-		this.codeSubCat = codeSubCat;
-	}
-
-	public int getShown() {
-		return shown;
-	}
-
-	public void setShown(int shown) {
-		this.shown = shown;
-	}
-
-	@Override
-	public String toString() {
-		return "ItemSubCat [idSubCat=" + idSubCat + ", idCat=" + idCat + ", namaSubCat=" + namaSubCat + ", codeSubCat="
-				+ codeSubCat + ", shown=" + shown + "]";
-	}
-	
-	
 }
