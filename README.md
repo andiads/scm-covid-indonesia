@@ -1,7 +1,12 @@
-# ScmCovid19idClient
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
-
+# ScmCovid19id Back-End Resource Server
+ 
+ This is the back-end resource server of SCM Covid19 APP
+ Using Springboot
+ 
+ For Front-End Client Side Project please refer to this repository:
+ `https://github.com/andiads/scm-covid19id-client`
+ (SCM-Covid19id-Client)[https://github.com/andiads/scm-covid19id-client]
+ 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
