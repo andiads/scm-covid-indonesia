@@ -28,15 +28,15 @@ public class ItemsService {
 	}
 	
 	public List<Items> findByItemName(String itemName) {
-		return this.itemsRepository.findByItemNameContaining(itemName);
+		return this.itemsRepository.findByNameContaining(itemName);
 	}
 	
 	public List<Items> findByItemCode(String itemCode) {
-		return this.itemsRepository.findByItemCodeContaining(itemCode);
+		return this.itemsRepository.findByCodeContaining(itemCode);
 	}
 	
 	public List<Items> findByItemBrand(String itemBrand) {
-		return this.itemsRepository.findByItemBrandContaining(itemBrand);
+		return this.itemsRepository.findByBrandContaining(itemBrand);
 	}
 	
 	public Items save(final Items items) {

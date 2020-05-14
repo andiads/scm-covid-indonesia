@@ -13,13 +13,13 @@ import com.nusacamp.app.entity.Items;
 public interface ItemsRepository extends JpaRepository<Items, Integer> {
 	
 	@RestResource(path = "itemNameContains")
-	public List<Items> findByItemNameContaining(@Param("item_name") String itemName);
+	public List<Items> findByNameContaining(@Param("name") String name);
 	
 	@RestResource(path = "itemCodeContains")
-	public List<Items> findByItemCodeContaining(@Param("item_code") String itemCode);
+	public List<Items> findByCodeContaining(@Param("code") String code);
 	
 	@RestResource(path = "itemBrandContains")
-	public List<Items> findByItemBrandContaining(@Param("item_brand") String itemBrand);
+	public List<Items> findByBrandContaining(@Param("brand") String brand);
 	
 	
 }
