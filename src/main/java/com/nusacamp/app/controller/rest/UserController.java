@@ -178,7 +178,7 @@ public class UserController {
 	// add new item
 	@PostMapping("/items/add")
 	public ResponseEntity<Items> addItem(@Valid @RequestBody Items item) {
-		if (this.itemsService.findByItemCode(item.getItemCode())!=null) {
+		if (this.itemsService.findByItemCode(item.getCode())!=null) {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
 		}
 		return ResponseEntity.ok(this.itemsService.save(item));
