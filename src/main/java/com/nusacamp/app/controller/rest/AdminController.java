@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nusacamp.app.entity.User;
 import com.nusacamp.app.entity.UserType;
 import com.nusacamp.app.entity.VUsersRegistered;
+import com.nusacamp.app.entity.Items;
+import com.nusacamp.app.entity.VItemsList;
 import com.nusacamp.app.service.UserService;
 import com.nusacamp.app.service.UserTypeService;
+import com.nusacamp.app.service.ViewItemsListService;
 import com.nusacamp.app.service.ViewUsersService;
 
 import lombok.RequiredArgsConstructor;
@@ -40,6 +43,14 @@ public class AdminController {
 	
 	private final ViewUsersService viewUsersService;
 	
+	private final ViewItemsListService viewItemsListService;
+	
+	
+	/********************************
+	 * 								*
+	 * 			USERS CRUD			*
+	 * 								*
+	 ********************************/
 	    // get user roles
 		@GetMapping("/roles-all")
 		public ResponseEntity<List<UserType>> getAllUserType() {
@@ -117,4 +128,13 @@ public class AdminController {
 			return new ResponseEntity<>(userService.updateUser(user), HttpStatus.CREATED);
 		}
 
+		
+		/********************************
+		 * 								*
+		 * 			ITEMS CRUD			*
+		 * 								*
+		 ********************************/
+		
+		
+		
 }

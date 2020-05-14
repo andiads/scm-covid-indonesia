@@ -23,11 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nusacamp.app.entity.User;
 import com.nusacamp.app.entity.UserType;
 import com.nusacamp.app.entity.VUsersRegistered;
+import com.nusacamp.app.entity.Items;
+import com.nusacamp.app.entity.VItemsList;
 import com.nusacamp.app.exception.ResourceNotFoundException;
 import com.nusacamp.app.jwt.JwtTokenProvider;
 import com.nusacamp.app.repository.UserRepository;
+import com.nusacamp.app.service.ItemsService;
 import com.nusacamp.app.service.UserService;
 import com.nusacamp.app.service.UserTypeService;
+import com.nusacamp.app.service.ViewItemsListService;
 import com.nusacamp.app.service.ViewUsersService;
 
 import lombok.RequiredArgsConstructor;
@@ -47,9 +51,19 @@ public class UserController {
 	
 	private final UserTypeService userTypeService;
 	
+	private final ItemsService itemsService;
+	
 	private final ViewUsersService viewUsersService;
 	
+	private final ViewItemsListService viewItemsListService;
 	
+	
+	
+	/********************************
+	 * 								*
+	 * 			USERS CRUD			*
+	 * 								*
+	 ********************************/
 	// get user roles
 	@GetMapping("/roles")
 	public ResponseEntity<List<UserType>> getAllUserType() {
@@ -118,6 +132,7 @@ public class UserController {
 		return ResponseEntity.ok(user.get());
 	}
 
+	// update user data
 	@PutMapping("/update/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable int id,
 			@Valid @RequestBody User user, HttpServletRequest hsr) 
@@ -130,20 +145,81 @@ public class UserController {
 		return ResponseEntity.ok(this.userService.updateUser(user));
 	}
 
-	/*@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable(value = "id") int id, 
-			@Valid @RequestBody User userDetails) throws ResourceNotFoundException {
-		
-		User user = this.userService.findById(id)
-				.orElseThrow(()-> new ResourceNotFoundException("User not found for this id :: "+ id));
-		
-		user.setFullname(userDetails.getFullname());
-		user.setMail(userDetails.getMail());
-		user.setStatus(userDetails.getStatus());
-		
-		final User updatedUser = userRepository.save(user);
-		return ResponseEntity.ok(updatedUser);
+	/********************************
+	 * 								*
+	 * 			ITEMS CRUD			*
+	 * 								*
+	 ********************************/
+	
+	// get items from view v_items_list
+	@GetMapping("/v-items")
+	public ResponseEntity<List<VItemsList>> getAllVItems(){
+		return ResponseEntity.ok(this.viewItemsListService.findAll());
 	}
-	*/
+
+	// get item by id from view v_items_list
+	@GetMapping("/v-items/{id}")
+	public ResponseEntity<VItemsList> getVItemById(@PathVariable int id) {
+		Optional<VItemsList> item = this.viewItemsListService.findById(id);
+		if (!item.isPresent()) {
+			log.error("Id " + id + " is not existed");
+			ResponseEntity.badRequest().build();
+		}
+		
+		return ResponseEntity.ok(item.get());
+	}
+	
+	// get avail item by shown=1 only from view v_items_list
+	@GetMapping("/v-items/available")
+	public ResponseEntity<List<VItemsList>> getAvailableItemsList() {
+		return ResponseEntity.ok(this.viewItemsListService.findAllAvailableitems());
+	}
+	
+	// add new item
+	@PostMapping("/items/add")
+	public ResponseEntity<Items> addItem(@Valid @RequestBody Items item) {
+		if (this.itemsService.findByItemCode(item.getItemCode())!=null) {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
+		return ResponseEntity.ok(this.itemsService.save(item));
+	}
+	
+	// get Item by id from Items table (not view)
+	@GetMapping("/items/{id}")
+	public ResponseEntity<Items> getItemById(@PathVariable int id) {
+		Optional<Items> item = this.itemsService.findById(id);
+		if (!item.isPresent()) {
+			log.error("Id " + id + " is not existed");
+			ResponseEntity.badRequest().build();
+		}
+			
+		return ResponseEntity.ok(item.get());
+	}
+	
+	// update item data
+	@PutMapping("/items/update/{id}")
+	public ResponseEntity<Items> updateItem(@PathVariable int id,
+			@Valid @RequestBody Items item) 
+	{
+		if (!this.itemsService.findById(id).isPresent()) {
+			log.error("Id " + id + " is not existed");
+			ResponseEntity.badRequest().build();
+		}
+		
+		return ResponseEntity.ok(this.itemsService.update(item));
+	}
+	
+	// delete item data (set shown from 1 to 0)
+	@PutMapping("/items/delete/{id}")
+	public ResponseEntity<Items> deleteItem(@PathVariable int id,
+			@Valid @RequestBody Items item) 
+	{
+		if (!this.itemsService.findById(id).isPresent()) {
+			log.error("Id " + id + " is not existed");
+			ResponseEntity.badRequest().build();
+		}
+		
+		return ResponseEntity.ok(this.itemsService.delete(item));
+	}
 	
 }

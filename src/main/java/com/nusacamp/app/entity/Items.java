@@ -23,20 +23,19 @@ public class Items {
 	@Id 
 	@Column(name="id_item")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idItem;
-	
+	private int id;	
 	@Column(name="item_code")
-	private String itemCode;
+	private String code;
 	@Column(name="item_name")
-	private String itemName;
+	private String name;
 	@Column(name="item_brand")
-	private String itemBrand;
+	private String brand;
 	@Column(name="item_kemasan")
-	private String itemKemasan;
+	private String packaging;
 	@Column(name="item_pieces_kemasan")
-	private int itemPcsKemasan;
+	private int packagingPcs;
 	@Column(name="item_metrics_pieces")
-	private String itemMetricsPcs;
+	private String metricsName;
 	@Column(name="id_category")
 	private int idCategory;
 	@Column(name="created_at")
@@ -47,7 +46,6 @@ public class Items {
 	private int shown;
 	@Column(name="created_by")
 	private int createdBy;
-	
 	@Column(name="id_brand")
 	private int idBrand;
 	@Column(name="id_sub_cat")
